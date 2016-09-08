@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    def dropWizardVersion = '1.0.0'
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropWizardVersion
+    compile group: 'io.dropwizard', name: 'dropwizard-assets', version: dropWizardVersion
+    compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.2.1'
+
+
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4'
+    testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.4'
+    testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.7'
+
+}
+
+mainClassName = "com.tomogle.coffeeshop.CoffeeShopApplication"
+
+project.ext {
+    resourcesPath = "$projectDir/src/main/resources/"
+}
+
+run {
+    args 'server', resourcesPath + 'config.yml'
+}

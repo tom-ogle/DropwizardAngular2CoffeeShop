@@ -1,0 +1,1 @@
+* Implement jar containing front-end assets

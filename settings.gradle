@@ -1,2 +1,2 @@
 rootProject.name = 'coffee-shop'
-
+include 'frontend', 'backend'

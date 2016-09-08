@@ -1,5 +1,8 @@
+build/
 target/
 *.iml
 .idea/
 node_modules/
 .gradle/
+*.log
+typings/

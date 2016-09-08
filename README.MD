@@ -1,6 +1,10 @@
-Simple Coffee Shop service using DropWiazard, MongoDB, Gradle, Angular 2 and npm.
+Simple Coffee Shop service using DropWizard, MongoDB, Gradle, Angular 2, Typescript and npm.
 
-To install node modules:
+Run Backend with:
 
-cd src/main/resources/assets
-npm install
+`gradle run`
+
+Run frontend with:
+
+`cd frontend`
+`npm start`
