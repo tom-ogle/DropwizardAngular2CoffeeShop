@@ -2,7 +2,6 @@ plugins {
     id "com.moowork.node" version "0.12"
     id "de.richsource.gradle.plugins.typescript" version "1.8.0"
 }
-apply plugin: 'java'
 
 node {
     version = '4.5.0'
@@ -18,15 +17,10 @@ String nodeExecutable() {
     return new VariantBuilder(nodeExt).build().nodeExec
 }
 
-clean {
-    delete "$projectDir/resources/app/"
-}
-
 compileTypeScript {
     compilerExecutable "${nodeExecutable()} node_modules/typescript/lib/tsc.js"
     dependsOn "npmInstall"
     projectFile new File("$projectDir/tsconfig.json")
-    source new File("$projectDir/src/main/ts/")
-    outputDir new File("$projectDir/src/main/resources/app/")
+    source new File("$projectDir/ts/")
+    outputDir new File("$projectDir/app/")
 }
-processResources.dependsOn compileTypeScript
