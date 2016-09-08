@@ -6,3 +6,7 @@ node_modules/
 .gradle/
 *.log
 typings/
+frontend/app/*.js
+frontend/app/*.js.map
+frontend/ts/*.js
+frontend/ts/*.js.map
