@@ -1,4 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+
+import {Drink} from './model/drink';
+import {DrinkService} from './service/drink.service';
 
 @Component({
     selector: 'coffee-app',
@@ -9,23 +12,24 @@ import {Component} from "@angular/core";
             {{ drink.name }}
           </li>
         </ul>
-`
+    `,
+    providers: [DrinkService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    constructor(private drinkService: DrinkService) {}
+
+    ngOnInit(): void {
+        this.getDrinks();
+    }
+
+    getDrinks(): void {
+        this.drinkService.getDrinks().then(drinks => this.drinks = drinks)
+    }
+
     title = 'Angular 2 Coffee Shop';
-    drinks = [
-        new Drink('Americano', 'Coffee'),
-        new Drink('Black Tea', 'Tea'),
-        new Drink('Cappuccino', 'Coffee'),
-        new Drink('Latte', 'Coffee')
-    ];
+    drinks: Drink[];
 
     submitted = false;
     onSubmit() { this.submitted = true; }
-}
-
-export class Drink {
-    constructor(public name: string, public family: string) {
-
-    }
 }
